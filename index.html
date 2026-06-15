@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoPegada — Calculadora de Pegada de Carbono</title>
+  <meta name="description" content="Descubra sua pegada de carbono respondendo um quiz rápido e veja como compensar suas emissões." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- fundo decorativo -->
+  <div class="bg-glow bg-glow--1" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow--2" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <main class="app">
+
+    <!-- ================= TELA INICIAL ================= -->
+    <section id="screen-start" class="screen screen--active">
+      <div class="start">
+        <div class="start__badge">
+          <span class="leaf-icon">🌱</span> Quiz ambiental · 10 perguntas
+        </div>
+        <h1 class="start__title">
+          Qual é o tamanho da sua<br />
+          <em>pegada de carbono</em>?
+        </h1>
+        <p class="start__text">
+          Responda perguntas rápidas sobre a sua rotina e descubra quanto
+          CO₂ você emite por ano, o impacto disso no planeta e o que fazer
+          para <strong>compensar</strong>.
+        </p>
+
+        <div class="start__stats">
+          <div class="stat">
+            <span class="stat__value">2 min</span>
+            <span class="stat__label">duração</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value">10</span>
+            <span class="stat__label">perguntas</span>
+          </div>
+          <div class="stat">
+            <span class="stat__value">CO₂</span>
+            <span class="stat__label">estimado/ano</span>
+          </div>
+        </div>
+
+        <button id="btn-start" class="btn btn--primary">
+          Começar o quiz
+          <span class="btn__arrow">→</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= TELA DO QUIZ ================= -->
+    <section id="screen-quiz" class="screen">
+      <div class="quiz">
+        <header class="quiz__header">
+          <span id="quiz-counter" class="quiz__counter">Pergunta 1 de 10</span>
+          <div class="quiz__progress">
+            <div id="quiz-progress-fill" class="quiz__progress-fill"></div>
+          </div>
+        </header>
+
+        <div id="quiz-card" class="quiz__card">
+          <span id="quiz-category" class="quiz__category"></span>
+          <h2 id="quiz-question" class="quiz__question"></h2>
+          <div id="quiz-options" class="quiz__options"></div>
+        </div>
+
+        <footer class="quiz__footer">
+          <button id="btn-back" class="btn btn--ghost" disabled>← Voltar</button>
+          <button id="btn-next" class="btn btn--primary" disabled>
+            Próxima <span class="btn__arrow">→</span>
+          </button>
+        </footer>
+      </div>
+    </section>
+
+    <!-- ================= TELA DE RESULTADO ================= -->
+    <section id="screen-result" class="screen">
+      <div class="result">
+        <p class="result__eyebrow">Seu resultado</p>
+
+        <div class="result__gauge-wrap">
+          <svg class="gauge" viewBox="0 0 200 200" role="img" aria-label="Medidor de pegada de carbono">
+            <circle class="gauge__track" cx="100" cy="100" r="84" />
+            <circle id="gauge-fill" class="gauge__fill" cx="100" cy="100" r="84" />
+          </svg>
+          <div class="gauge__center">
+            <span id="result-number" class="gauge__number">0</span>
+            <span class="gauge__unit">kg de CO₂ / ano</span>
+          </div>
+        </div>
+
+        <h2 id="result-level" class="result__level"></h2>
+        <p id="result-message" class="result__message"></p>
+
+        <div class="result__compare" id="result-compare"></div>
+
+        <!-- sugestões -->
+        <div class="panel">
+          <h3 class="panel__title">💡 Sugestões de mudança</h3>
+          <ul id="result-tips" class="tips"></ul>
+        </div>
+
+        <!-- compensação -->
+        <div class="panel panel--accent">
+          <h3 class="panel__title">🌳 Como compensar</h3>
+          <p id="result-offset" class="panel__text"></p>
+          <div id="result-trees" class="trees" aria-hidden="true"></div>
+        </div>
+
+        <button id="btn-restart" class="btn btn--primary">
+          Refazer o quiz <span class="btn__arrow">↺</span>
+        </button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="page-footer">
+    <p>EcoPegada · Os valores são estimativas educativas e não medições científicas exatas.</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>
